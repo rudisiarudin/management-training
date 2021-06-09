@@ -18,6 +18,19 @@
         Manage Participant
     </div>
 
+    <li class="nav-item {{ in_array(UrlSegment::REGISTRATION, request()->segments()) ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#registrationData" aria-expanded="true" aria-controls="registrationData">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Registration Data</span>
+        </a>
+        <div id="registrationData" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Manage Registration:</h6>
+                <a class="collapse-item" href="{{ route('registration-index') }}">Show List</a>
+            </div>
+        </div>
+    </li>
+
     <li class="nav-item {{ in_array(UrlSegment::PARTICIPANT, request()->segments()) ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-users-cog"></i>

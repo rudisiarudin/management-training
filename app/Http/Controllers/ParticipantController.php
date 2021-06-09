@@ -3,12 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Imports\ParticipantImport;
+use App\Models\Company;
 use App\Models\Participant;
+use App\Models\Registration;
+use App\Models\TrainingSchedule;
+use App\Services\ParticipantService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Maatwebsite\Excel\Excel;
+use Maatwebsite\Excel\Facades\Excel;
 
 class ParticipantController extends Controller
 {
+    protected $participantService;
+
+    public function __construct(
+        ParticipantService $participantService
+    ) {
+        $this->participantService = $participantService;
+    }
+
     public function index() {
         $participants = Participant::get();
 
@@ -16,7 +29,18 @@ class ParticipantController extends Controller
     }
 
     public function create() {
-        return view('admin-dashboard.participant.create');
+        $companies = Company::get()->map(function ($item) {
+           return ['id' => $item->id, 'name' => $item->name];
+        });
+
+        $trainingSchedules = TrainingSchedule::get()->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'name' => $item->training->name . ' - ' . Carbon::parse($item->schedule_date)->format('d/m/Y')
+            ];
+        });
+
+        return view('admin-dashboard.participant.create', compact('companies', 'trainingSchedules'));
     }
 
     public function create_bulk() {
@@ -24,18 +48,19 @@ class ParticipantController extends Controller
     }
 
     public function save(Request $request) {
-        $participant = $request->validate([
+        $request->validate([
             'name' => 'required|max:45',
             'email' => 'required|email',
             'phone' => 'required|numeric',
-            'address' => 'required'
+            'address' => 'required',
+            'company_id' => 'required',
+            'training_id' => '',
+            'ktp' => '',
+            'ijazah' => '',
+            'surat_pengantar' => '',
         ]);
 
-        $participant['company_id'] = 1;
-        $participant['training_id'] = 1;
-        $participant['status'] = 1;
-
-        Participant::create($participant);
+        $this->participantService->saveParticipant($request);
 
         return redirect()->route('participant-index')->with([
             'status' => 'success',
@@ -76,5 +101,9 @@ class ParticipantController extends Controller
         $participant = Participant::find($id);
 
         return view('admin-dashboard.participant.edit', ['participant' => $participant]);
+    }
+
+    public function getTemplate() {
+        return Excel::store();
     }
 }

@@ -1,11 +1,11 @@
 @extends('layouts.admin-dasboard')
 
-@section('title', 'TMS | Participant Data')
+@section('title', 'TMS | Registration Data')
 
 @section('content')
     <div class="">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h3 class="h4 mb-0 text-gray-800">Participant List</h3>
+            <h3 class="h4 mb-0 text-gray-800">Training Registration List</h3>
         </div>
 
         <div class="row">
@@ -18,27 +18,31 @@
                             <thead class="">
                             <tr>
                                 <th>#</th>
-                                <th>Name</th>
-                                <th>Company Name</th>
-                                <th>Last Training Attended</th>
-                                <th>Report Progress</th>
+                                <th>Training Name</th>
+                                <th>Participant Name</th>
+                                <th>Register Name</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Paid Status</th>
                                 <th>Certificate Progress</th>
                                 <th>Status</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($participants as $key => $item)
+                            @foreach($registrations as $key => $item)
                                 <tr>
                                     <td>{{ ++$key }}</td>
+                                    <td>{{ $item->trainingSchedule->training->alname }}</td>
+                                    <td>{{ $item->participant->name ?: '-' }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->companies->name ?: '-' }}</td>
-                                    <td>{{ $item->trainingSchedule->training->name ?: '-' }}</td>
-                                    <td>In Progress Internal</td>
-                                    <td>Submitted to Kemenaker</td>
-                                    <td>Lulus</td>
+                                    <td>{{ $item->email }}</td>
+                                    <td>{{ $item->phone }}</td>
+                                    <td>{{ $item->is_paid }}</td>
+                                    <td>{{ $item->certificate_progress }}</td>
+                                    <td>{{ $item->status }}</td>
                                     <td class="d-flex">
-                                        <form action="{{ route('participant-delete', ['id' => $item->id]) }}" method="POST">
+                                        <form action="" method="POST">
                                             @csrf
                                             @method('DELETE')
 
@@ -47,7 +51,7 @@
                                             </button>
                                         </form>
 
-                                        <a href="{{ route('participant-edit', ['id' => $item->id]) }}" class="m-1" title="Edit">
+                                        <a href="" class="m-1" title="Edit">
                                             <span class="text-primary small"><i class="fa fa-fw fa-edit"></i></span>
                                         </a>
                                     </td>
@@ -60,8 +64,8 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <a href="{{ route('participant-create') }}" type="submit" class="btn btn-primary">
-                                    <i class="fa fa-fw fa-user-plus mr-2"></i> Add Participant
+                                <a href="" type="submit" class="btn btn-primary">
+                                    <i class="fa fa-fw fa-user-plus mr-2"></i> Add Registration Data
                                 </a>
                             </div>
                         </div>

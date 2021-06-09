@@ -10,7 +10,7 @@
             <div class="col-md-7">
                 <div class="card w-100">
                     <div class="card-body">
-                        <form action="{{ route('participant-save') }}" method="POST">
+                        <form action="{{ route('participant-save') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
@@ -22,9 +22,14 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="company">Company</label>
-                                <input type="text" id="company" class="form-control @error('company') is-invalid @enderror" name="company" value="{{ old('company') }}">
-                                @error('company')
+                                <label for="company_id">Company</label>
+                                <select id="company_id" class="form-control @error('company_id') is-invalid @enderror" name="company_id">
+                                    <option value=""></option>
+                                    @foreach($companies as $company)
+                                        <option value="{{ $company['id'] }}">{{ $company['name'] }}</option>
+                                    @endforeach
+                                </select>
+                                @error('company_id')
                                     <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
                             </div>
@@ -46,11 +51,57 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="company">Phone</label>
-                                <input type="text" id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phon') }}">
+                                <label for="phone">Phone</label>
+                                <input type="text" id="phone" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}">
                                 @error('phone')
                                     <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="training_id">Participant For Training (Optional)</label>
+                                <select id="training_id" class="form-control @error('training_id') is-invalid @enderror" name="training_id">
+                                    <option value=""></option>
+                                    @foreach($trainingSchedules as $training)
+                                        <option value="{{ $training['id'] }}">{{ $training['name'] }}</option>
+                                    @endforeach
+                                </select>
+                                @error('training_id')
+                                    <small class="text-danger mt-2">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ktp">ID Card (Image)</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="ktp" name="ktp" accept="image/*">
+                                    <label class="custom-file-label" for="ktp">Choose file...</label>
+                                    @error('ktp')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ijazah">Diploma Certificate (Image)</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="ijazah" name="ijazah" accept="image/*">
+                                    <label class="custom-file-label" for="ijazah">Choose file...</label>
+                                    @error('ijazah')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="surat_pengantar">Permission Letter From Office (Image)</label>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="surat_pengantar" name="surat_pengantar" accept="image/*">
+                                    <label class="custom-file-label" for="surat_pengantar">Choose file...</label>
+                                    @error('surat_pengantar')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
 
                             <hr>
@@ -72,7 +123,7 @@
                                 Try new bulk add participant feature.
                                 You can easily generate participant data with pre-templated excel.
                             </p>
-                            <a href="" class="btn btn-secondary">
+                            <a href="{{ route('participant-create-bulk') }}" class="btn btn-secondary">
                                 Try Bulk Create
                             </a>
                         </div>

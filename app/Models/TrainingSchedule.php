@@ -12,6 +12,6 @@ class TrainingSchedule extends Model
     protected $guarded = [];
 
     public function training() {
-        return $this->belongsTo(Training::class);
+        return $this->belongsTo(Training::class)->withDefault();
     }
 }

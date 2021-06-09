@@ -10,4 +10,12 @@ class Participant extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    public function companies() {
+        return $this->belongsTo(Company::class, 'company_id')->withDefault();
+    }
+
+    public function trainingSchedule() {
+        return $this->belongsTo(TrainingSchedule::class, 'training_id')->withDefault();
+    }
 }
