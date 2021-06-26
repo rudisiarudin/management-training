@@ -12,22 +12,32 @@
             <div class="col-md-7">
                 <div class="card w-100">
                     <div class="card-body">
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('registration-save') }}" method="POST" enctype="multipart/form-data">
                             @csrf
 
                             <div class="form-group">
-                                <label for="training_id">Training</label>
-                                <input type="text" id="training_id" class="form-control @error('training_id') is-invalid @enderror" name="training_id" value="{{ old('training_id') }}">
-                                @error('training_id')
-                                    <small class="text-danger mt-2">{{ $message }}</small>
+                                <label for="training_schedule_id">Participant For Training (Optional)</label>
+                                <select id="training_schedule_id" class="form-control @error('training_schedule_id') is-invalid @enderror" name="training_schedule_id">
+                                    <option value=""></option>
+                                    @foreach($trainingSchedules as $training)
+                                        <option value="{{ $training['id'] }}">{{ $training['name'] }}</option>
+                                    @endforeach
+                                </select>
+                                @error('training_schedule_id')
+                                <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
                             </div>
 
                             <div class="form-group">
-                                <label for="participant_id">Participant</label>
-                                <input type="text" id="participant_id" class="form-control @error('participant_id') is-invalid @enderror" name="participant_id" value="{{ old('participant_id') }}">
+                                <label for="participant_id">Participant Name</label>
+                                <select id="participant_id" class="form-control @error('participant_id') is-invalid @enderror" name="participant_id">
+                                    <option value=""></option>
+                                    @foreach($participants as $participant)
+                                        <option value="{{ $participant['id'] }}">{{ $participant['name'] }}</option>
+                                    @endforeach
+                                </select>
                                 @error('participant_id')
-                                    <small class="text-danger mt-2">{{ $message }}</small>
+                                <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
                             </div>
 

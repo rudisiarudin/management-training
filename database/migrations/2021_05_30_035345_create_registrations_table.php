@@ -21,9 +21,9 @@ class CreateRegistrationsTable extends Migration
             $table->string('email');
             $table->string('phone');
             $table->tinyInteger('is_paid')->default(1);
-            $table->tinyInteger('status')->default(1);
             $table->tinyInteger('passed_test')->default(1);
             $table->tinyInteger('certificate_progress')->default(1);
+            $table->string('proof_transfer')->nullable();
             $table->timestamps();
         });
     }

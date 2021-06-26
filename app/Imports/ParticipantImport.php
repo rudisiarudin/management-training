@@ -7,6 +7,13 @@ use Maatwebsite\Excel\Concerns\ToModel;
 
 class ParticipantImport implements ToModel
 {
+    protected $trainingId;
+
+    public function __construct($training_id)
+    {
+        $this->trainingId = $training_id;
+    }
+
     /**
     * @param array $row
     *
@@ -18,7 +25,8 @@ class ParticipantImport implements ToModel
             'name' => $row[0],
             'address' => $row[1],
             'email' => $row[2],
-            'phone' => $row[3]
+            'phone' => $row[3],
+            'training_id' => $this->trainingId
         ]);
     }
 }

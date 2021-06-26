@@ -22,6 +22,7 @@ class CreateTrainingSchedulesTable extends Migration
             $table->float('estimate_budget');
             $table->integer('minimum_participant');
             $table->string('permission_document');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

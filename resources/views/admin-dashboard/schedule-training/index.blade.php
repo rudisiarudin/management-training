@@ -23,8 +23,8 @@
                             <th>Time</th>
                             <th>Location</th>
                             <th>PIC</th>
-                            <th>Total Participant</th>
-                            <th>Estimate Budget</th>
+                            <th>Min. Participant</th>
+                            <th>Est. Budget</th>
                             <th>Status</th>
                             <th>Action</th>
                         </tr>
@@ -37,9 +37,18 @@
                                 <td>{{ $item->schedule_date }}</td>
                                 <td>{{ $item->location }}</td>
                                 <td>{{ $item->pic }}</td>
-                                <td>{{ $item->total_participant }}</td>
-                                <td>{{ $item->estimate_budget }}</td>
-                                <td>{{ 'Planning' }}</td>
+                                <td>{{ $item->minimum_participant }}</td>
+                                <td>{{ 'IDR ' . number_format($item->estimate_budget) }}</td>
+                                <td>
+                                    @if($item->status == 1)
+                                        <span class="badge badge-secondary">Planning</span>
+                                    @elseif($item->status == 2)
+                                        <span class="badge badge-primary">On Running</span>
+                                    @elseif($item->status == 3)
+                                        <span class="badge badge-success">Finish</span>
+                                    @endif
+                                </td>
+                                </td>
                                 <td class="d-flex">
                                     <form action="{{ route('training-schedule-delete', ['id' => $item->id]) }}" method="POST">
                                         @csrf

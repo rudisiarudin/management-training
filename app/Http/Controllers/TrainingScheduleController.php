@@ -2,12 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\TrainingScheduleExport;
 use App\Models\Training;
 use App\Models\TrainingSchedule;
+use App\Services\TrainingScheduleService;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use PDF;
+use Excel;
 
 class TrainingScheduleController extends Controller
 {
+    protected $trainingScheduleService;
+
+    public function __construct(
+        TrainingScheduleService $trainingScheduleService
+    ) {
+        $this->trainingScheduleService = $trainingScheduleService;
+    }
+
     public function index() {
         $trainingSchedule = TrainingSchedule::get();
 
@@ -38,7 +51,9 @@ class TrainingScheduleController extends Controller
         $file->move($filePath, $fileName);
         $trainingSchedule['permission_document'] = $filePath . '/' . $fileName;
 
-        TrainingSchedule::create($trainingSchedule);
+        $savedTrainingSchedule = TrainingSchedule::create($trainingSchedule);
+
+        $this->trainingScheduleService->generateTrainingTimeline($savedTrainingSchedule);
 
         return redirect()->route('training-schedule-index')->with([
             'status' => 'success',
@@ -60,6 +75,7 @@ class TrainingScheduleController extends Controller
             'location' => 'required|min:1',
             'estimate_budget' => 'required|numeric',
             'pic' => '',
+            'status' => '',
             'minimum_participant' => ''
         ]);
 
@@ -90,5 +106,33 @@ class TrainingScheduleController extends Controller
             'status' => 'success',
             'message' => 'Successfully delete training schedule data.'
         ]);
+    }
+
+    public function report($id) {
+        $trainingSchedule = TrainingSchedule::find($id);
+
+        return Excel::download(new TrainingScheduleExport($id), 'test-excel.xlsx');
+    }
+
+    public function generateBap($id) {
+        $trainingSchedule = TrainingSchedule::find($id);
+        $bapNumber = $trainingSchedule->id . '/TMI-BAP/K3/' . Carbon::now()->format('m-Y');
+        $pdf = PDF::loadView('pdf-template.training-bap', compact('trainingSchedule', 'bapNumber'));
+
+        return $pdf->stream('test.pdf');
+    }
+
+    public function generateAbsence($id) {
+        $trainingSchedule = TrainingSchedule::find($id);
+        $pdf = PDF::loadView('pdf-template.training-absence', compact('trainingSchedule'));
+
+        return $pdf->stream('test.pdf');
+    }
+
+    public function generateRequirementDocument($id) {
+        $trainingSchedule = TrainingSchedule::find($id);
+        $pdf = PDF::loadView('pdf-template.requirement-training', compact('trainingSchedule'));
+
+        return $pdf->stream('test.pdf');
     }
 }

@@ -14,4 +14,8 @@ class TrainingSchedule extends Model
     public function training() {
         return $this->belongsTo(Training::class)->withDefault();
     }
+
+    public function registrations() {
+        return $this->hasMany(Registration::class);
+    }
 }

@@ -23,7 +23,7 @@ class ParticipantController extends Controller
     }
 
     public function index() {
-        $participants = Participant::get();
+        $participants = Participant::paginate(10);
 
         return view('admin-dashboard.participant.index', ['participants' => $participants]);
     }
@@ -44,13 +44,20 @@ class ParticipantController extends Controller
     }
 
     public function create_bulk() {
-        return view('admin-dashboard.participant.create-bulk');
+        $trainingSchedules = TrainingSchedule::get()->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'name' => $item->training->name . ' - ' . Carbon::parse($item->schedule_date)->format('d/m/Y')
+            ];
+        });
+
+        return view('admin-dashboard.participant.create-bulk', compact('trainingSchedules'));
     }
 
     public function save(Request $request) {
         $request->validate([
             'name' => 'required|max:45',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:participants',
             'phone' => 'required|numeric',
             'address' => 'required',
             'company_id' => 'required',
@@ -60,7 +67,17 @@ class ParticipantController extends Controller
             'surat_pengantar' => '',
         ]);
 
-        $this->participantService->saveParticipant($request);
+        $createdParticipant = $this->participantService->saveParticipant($request);
+
+        if ($request->training_id) {
+            Registration::create([
+                'training_schedule_id' => $request->training_id,
+                'participant_id' => $createdParticipant->id,
+                'name' => $createdParticipant->name,
+                'email' => $createdParticipant->email,
+                'phone' => $createdParticipant->phone,
+            ]);
+        }
 
         return redirect()->route('participant-index')->with([
             'status' => 'success',
@@ -70,8 +87,10 @@ class ParticipantController extends Controller
 
     public function save_bulk(Request $request) {
         $request->validate([
-            'participant_data' => 'required'
+            'participant_data' => 'required',
+            'training_id' => 'required'
         ]);
+        $trainingId = $request->input('training_id');
 
         $file = $request->file('participant_data');
         $filePath = 'document/excel/participant_bulk/';
@@ -79,7 +98,7 @@ class ParticipantController extends Controller
 
         $file->move($filePath, $fileName);
 
-        \Maatwebsite\Excel\Facades\Excel::import(new ParticipantImport(), public_path($filePath . $fileName));
+        Excel::import(new ParticipantImport($trainingId), public_path($filePath . $fileName));
 
         return redirect()->route('participant-index')->with([
             'status' => 'success',
@@ -99,8 +118,29 @@ class ParticipantController extends Controller
 
     public function edit($id) {
         $participant = Participant::find($id);
+        $companies = Company::get()->map(function ($item) {
+            return ['id' => $item->id, 'name' => $item->name];
+        });
 
-        return view('admin-dashboard.participant.edit', ['participant' => $participant]);
+        return view('admin-dashboard.participant.edit', compact('participant', 'companies'));
+    }
+
+    public function update(Request $request, $id) {
+        $request->validate([
+            'name' => 'required|max:45',
+            'phone' => 'required|numeric',
+            'address' => 'required',
+            'ktp' => '',
+            'ijazah' => '',
+            'surat_pengantar' => '',
+        ]);
+
+        $this->participantService->updateFileParticipant($request, $id);
+
+        return redirect()->route('participant-index')->with([
+            'status' => 'success',
+            'message' => 'Successfully update participant.'
+        ]);
     }
 
     public function getTemplate() {

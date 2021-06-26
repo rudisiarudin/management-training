@@ -5,7 +5,7 @@
 @section('content')
     <div class="mb-4">
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h3 class="h4 mb-0 text-gray-800">Create Training Schedule</h3>
+            <h3 class="h4 mb-0 text-gray-800">Detail Training Schedule</h3>
         </div>
 
         <div class="row">
@@ -70,6 +70,19 @@
                             </div>
 
                             <div class="form-group">
+                                <label for="status">Training Status</label>
+                                <select id="status" class="form-control @error('status') is-invalid @enderror" name="status">
+                                    <option value=""></option>
+                                    <option value="1" {{ $trainingSchedule->status == 1 ? 'selected' : '' }}>Planning</option>
+                                    <option value="2" {{ $trainingSchedule->status == 2 ? 'selected' : '' }}>On Running</option>
+                                    <option value="3" {{ $trainingSchedule->status == 3 ? 'selected' : '' }}>Finish</option>
+                                </select>
+                                @error('status')
+                                <small class="text-danger mt-2">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <label for="permission_document">Permission Document</label>
 
                                 <iframe src="{{ asset('') . $trainingSchedule->permission_document }}" width="100%" height="600" style="border: none;"></iframe>
@@ -92,6 +105,86 @@
                         </form>
                     </div>
                 </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        Download training BAP permission for Kemenaker
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="{{ route('training-schedule-bap', ['id' => $trainingSchedule->id]) }}" target="_blank" class="btn btn-primary w-100">
+                                    <i class="fa fa-fw fa-file-download mr-2"></i> Download BAP
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        Download Training Absence Form
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="{{ route('training-schedule-absence', ['id' => $trainingSchedule->id]) }}" target="_blank" class="btn btn-primary w-100">
+                                    <i class="fa fa-fw fa-file-download mr-2"></i> Download Absence Form
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        Download Participant Requirement Document
+
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <a href="{{ route('training-schedule-requirement', ['id' => $trainingSchedule->id]) }}" target="_blank" class="btn btn-primary w-100">
+                                    <i class="fa fa-fw fa-file-download mr-2"></i> Download Requirement Document
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               <div class="card">
+                   <div class="card-header">
+                       Registered : <strong>{{ $trainingSchedule->registrations->count() }} Participant</strong>
+                   </div>
+                   <div class="card-body">
+                       <div class="table-responsive">
+                           <table class="table table-striped">
+                               <tr>
+                                   <th>#</th>
+                                   <th>Name</th>
+                                   <th>Registered At</th>
+                               </tr>
+                               @foreach($trainingSchedule->registrations as $key => $item)
+                                   <tr>
+                                       <td>{{ ++$key }}</td>
+                                       <td>{{ $item->participant->name }}</td>
+                                       <td>{{ \Carbon\Carbon::parse($item->created_at)->format('d/m/Y') }}</td>
+                                   </tr>
+                               @endforeach
+                           </table>
+                       </div>
+
+                       <hr>
+                       <div class="row">
+                           <div class="col-md-12">
+                               <a href="{{ route('training-schedule-report', ['id' => $trainingSchedule->id]) }}" target="_blank" class="btn btn-primary w-100">
+                                   <i class="fa fa-fw fa-file-pdf mr-2"></i> Generate Biodata Report
+                               </a>
+                           </div>
+                       </div>
+                   </div>
+               </div>
             </div>
         </div>
     </div>

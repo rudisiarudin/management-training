@@ -25,7 +25,6 @@
                                 <th>Phone</th>
                                 <th>Paid Status</th>
                                 <th>Certificate Progress</th>
-                                <th>Status</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -33,16 +32,29 @@
                             @foreach($registrations as $key => $item)
                                 <tr>
                                     <td>{{ ++$key }}</td>
-                                    <td>{{ $item->trainingSchedule->training->alname }}</td>
+                                    <td>{{ $item->trainingSchedule->training->name }}</td>
                                     <td>{{ $item->participant->name ?: '-' }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->email }}</td>
                                     <td>{{ $item->phone }}</td>
-                                    <td>{{ $item->is_paid }}</td>
-                                    <td>{{ $item->certificate_progress }}</td>
-                                    <td>{{ $item->status }}</td>
+                                    <td>
+                                        @if($item->is_paid == 1)
+                                            <span class="badge badge-danger">Not Paid</span>
+                                        @elseif($item->is_paid == 2)
+                                            <span class="badge badge-success">Paid</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($item->certificate_progress == 1)
+                                            <span class="badge badge-dark">Not Submit</span>
+                                        @elseif($item->certificate_progress == 2)
+                                            <span class="badge badge-primary">Submitted</span>
+                                        @elseif($item->certificate_progress == 3)
+                                            <span class="badge badge-success">Released</span>
+                                        @endif
+                                    </td>
                                     <td class="d-flex">
-                                        <form action="" method="POST">
+                                        <form action="{{ route('registration-delete', ['id' => $item->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
 
@@ -51,7 +63,7 @@
                                             </button>
                                         </form>
 
-                                        <a href="" class="m-1" title="Edit">
+                                        <a href="{{ route('registration-edit', ['id' => $item->id]) }}" class="m-1" title="Edit">
                                             <span class="text-primary small"><i class="fa fa-fw fa-edit"></i></span>
                                         </a>
                                     </td>
@@ -64,7 +76,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <a href="" type="submit" class="btn btn-primary">
+                                <a href="{{ route('registration-create') }}" type="submit" class="btn btn-primary">
                                     <i class="fa fa-fw fa-user-plus mr-2"></i> Add Registration Data
                                 </a>
                             </div>

@@ -10,6 +10,8 @@ class Training extends Model
 {
     use HasFactory;
 
+    protected $guarded = [];
+
     static function getTrainingNameSlugById($id) {
         return Str::kebab(Training::find($id)->name);
     }

@@ -65,7 +65,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-12 text-right">
-                                <a href="" type="submit" class="btn btn-primary">
+                                <a href="{{ route('company-create') }}" type="submit" class="btn btn-primary">
                                     <i class="fa fa-fw fa-folder-plus mr-2"></i> Add Company Data
                                 </a>
                             </div>

@@ -67,6 +67,19 @@
     </div>
 
     <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#trainingData" aria-expanded="true" aria-controls="trainingData">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Training Data</span>
+        </a>
+        <div id="trainingData" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Manage Trainings:</h6>
+                <a class="collapse-item" href="{{ route('training-index') }}">Schedule List</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-calendar-check"></i>
             <span>Training Schedule</span>
@@ -75,7 +88,8 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage Trainings:</h6>
                 <a class="collapse-item" href="{{ route('training-schedule-index') }}">Schedule List</a>
-                <a class="collapse-item" href="">Add New Training</a>
+                <a class="collapse-item" href="{{ route('training-schedule-create') }}">Add New Training</a>
+                <a class="collapse-item" href="{{ route('training-timeline-index') }}">Training Timeline</a>
             </div>
         </div>
     </li>
@@ -88,7 +102,7 @@
         <div id="trainersData" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manage Trainers:</h6>
-                <a class="collapse-item" href="">Trainer List</a>
+                <a class="collapse-item" href="{{ route('trainer-index') }}">Trainer List</a>
                 <a class="collapse-item" href="">Create Trainer Data</a>
             </div>
         </div>

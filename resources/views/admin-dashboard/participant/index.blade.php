@@ -21,22 +21,33 @@
                                 <th>Name</th>
                                 <th>Company Name</th>
                                 <th>Last Training Attended</th>
-                                <th>Report Progress</th>
-                                <th>Certificate Progress</th>
-                                <th>Status</th>
+                                <th>KTP</th>
+                                <th>Diploma Certificate</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($participants as $key => $item)
                                 <tr>
-                                    <td>{{ ++$key }}</td>
+                                    <td>{{ ($participants->currentPage() - 1) * 10 + $key + 1 }}</td>
                                     <td>{{ $item->name }}</td>
                                     <td>{{ $item->companies->name ?: '-' }}</td>
                                     <td>{{ $item->trainingSchedule->training->name ?: '-' }}</td>
-                                    <td>In Progress Internal</td>
-                                    <td>Submitted to Kemenaker</td>
-                                    <td>Lulus</td>
+                                    <td>
+                                        @if($item->ktp)
+                                            <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                        @else
+                                            <span class="text-danger"><i class="fas fa-times-circle"></i></span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if($item->ijazah)
+                                            <span class="text-success"><i class="fas fa-check-circle"></i></span>
+                                        @else
+                                            <span class="text-danger"><i class="fas fa-times-circle"></i></span>
+                                        @endif
+                                    </td>
+                                    <td>
                                     <td class="d-flex">
                                         <form action="{{ route('participant-delete', ['id' => $item->id]) }}" method="POST">
                                             @csrf
@@ -58,6 +69,11 @@
                     </div>
 
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12 text-right">
+                                {!! $participants->render() !!}
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-12 text-right">
                                 <a href="{{ route('participant-create') }}" type="submit" class="btn btn-primary">

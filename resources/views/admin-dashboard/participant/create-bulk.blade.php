@@ -14,6 +14,19 @@
                             @csrf
 
                             <div class="form-group">
+                                <label for="training_id">Participant For Training</label>
+                                <select id="training_id" class="form-control @error('training_id') is-invalid @enderror" name="training_id">
+                                    <option value=""></option>
+                                    @foreach($trainingSchedules as $training)
+                                        <option value="{{ $training['id'] }}">{{ $training['name'] }}</option>
+                                    @endforeach
+                                </select>
+                                @error('training_id')
+                                <small class="text-danger mt-2">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
                                 <label for="participant_data">Upload Excel File</label>
                                 <div class="custom-file">
                                     <input type="file" class="custom-file-input" id="participant_data" name="participant_data" required>
@@ -31,6 +44,29 @@
                                 </button>
                             </div>
                         </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-5">
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Example</h5>
+                        <p>
+                            Uploaded excel file must not be with header, and follow this order.
+                            Dont forget to choose training schedule.
+                        </p>
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <td><i>Name</i></td>
+                                    <td><i>Address</i></td>
+                                    <td><i>Email</i></td>
+                                    <td><i>Phone</i></td>
+                                </tr>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

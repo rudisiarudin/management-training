@@ -10,8 +10,9 @@
             <div class="col-md-7">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('participant-save') }}" method="POST">
+                        <form action="{{ route('participant-update', ['id' => $participant->id]) }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            @method('PUT')
 
                             <div class="form-group">
                                 <label for="name">Name</label>
@@ -22,10 +23,15 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="company">Company</label>
-                                <input type="text" id="company" class="form-control @error('company') is-invalid @enderror" name="company" value="{{ $participant->company }}">
-                                @error('company')
-                                    <small class="text-danger mt-2">{{ $message }}</small>
+                                <label for="company_id">Company</label>
+                                <select id="company_id" class="form-control @error('company_id') is-invalid @enderror" name="company_id">
+                                    <option value=""></option>
+                                    @foreach($companies as $company)
+                                        <option value="{{ $company['id'] }}" {{ $company['id'] == $participant->company_id ? 'selected' : '' }}>{{ $company['name'] }}</option>
+                                    @endforeach
+                                </select>
+                                @error('company_id')
+                                <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
                             </div>
 
@@ -39,7 +45,7 @@
 
                             <div class="form-group">
                                 <label for="company">Email</label>
-                                <input type="text" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $participant->email }}">
+                                <input type="text" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $participant->email }}" disabled>
                                 @error('email')
                                     <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
@@ -51,6 +57,48 @@
                                 @error('phone')
                                     <small class="text-danger mt-2">{{ $message }}</small>
                                 @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ktp">ID Card (Image)</label>
+                                <div class="w-50 mb-3">
+                                    <img src="{{ asset($participant->ktp) }}" class="w-100">
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="ktp" name="ktp" accept="image/*">
+                                    <label class="custom-file-label" for="ktp">Choose file...</label>
+                                    @error('ktp')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="ijazah">Diploma Certificate (Image)</label>
+                                <div class="w-50 mb-3">
+                                    <img src="{{ asset($participant->ijazah) }}" class="w-100">
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="ijazah" name="ijazah" accept="image/*">
+                                    <label class="custom-file-label" for="ijazah">Choose file...</label>
+                                    @error('ijazah')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="surat_pengantar">Permission Letter From Office (Image)</label>
+                                <div class="w-50 mb-3">
+                                    <img src="{{ asset($participant->surat_pengantar) }}" class="w-100">
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="surat_pengantar" name="surat_pengantar" accept="image/*">
+                                    <label class="custom-file-label" for="surat_pengantar">Choose file...</label>
+                                    @error('surat_pengantar')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
                             </div>
 
                             <hr>
