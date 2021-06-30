@@ -2,55 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c2b5319-4c07-4d92-a04e-90212b49cec9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Services/TrainingScheduleService.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/registration/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/trainer/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/trainer/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/trainer/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/training-timeline/detail-list.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/training-timeline/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/training/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/training/edit.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/training/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pdf-template/requirement-training.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pdf-template/training-bap.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/pdf-template/training-report.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/final-project-tms.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/final-project-tms.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/front-app/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/front-app/profile.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/front-app/register.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/front-app/training-list.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/front-app.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/custom-routes/admin-routes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/routes/custom-routes/front-app-routes.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ParticipantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ParticipantController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RegistrationController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TrainingScheduleController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TrainingScheduleController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Imports/ParticipantImport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Imports/ParticipantImport.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Training.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Training.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/Participant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Participant.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/TrainingSchedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/TrainingSchedule.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AppServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/RouteServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Services/ParticipantService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ParticipantService.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_22_035714_create_training_schedules_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_22_035714_create_training_schedules_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_05_30_035345_create_registrations_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_05_30_035345_create_registrations_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/img/permissions/ahli-k3-umum/2021-05-25/f9e9965b722ec06d229bebdc46309f97.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/company/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/company/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/participant/create-bulk.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/participant/create-bulk.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/participant/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/participant/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/participant/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/participant/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/registration/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/registration/create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/registration/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/registration/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/schedule-training/edit.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/schedule-training/edit.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/schedule-training/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/schedule-training/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/components/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_18_041251_create_participants_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_18_041251_create_participants_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2021_06_22_230305_create_training_timelines_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_06_22_230305_create_training_timelines_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/register.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin-dasboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin-dasboard.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,6 +222,12 @@
       <workItem from="1624402905706" duration="6943000" />
       <workItem from="1624490705296" duration="4637000" />
       <workItem from="1624576966954" duration="4675000" />
+      <workItem from="1624680353559" duration="5053000" />
+      <workItem from="1624788715723" duration="5394000" />
+      <workItem from="1624837360536" duration="6686000" />
+      <workItem from="1624927353080" duration="318000" />
+      <workItem from="1624972832464" duration="1504000" />
+      <workItem from="1625011389490" duration="1594000" />
     </task>
     <servers />
   </component>
@@ -259,10 +235,10 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="383" y="164" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1624580016754">
+    <state x="383" y="164" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1624843495574">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="383" y="164" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720@0.0.1280.720" timestamp="1624580016754" />
+    <state x="383" y="164" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720@0.0.1280.720" timestamp="1624843495574" />
     <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1618733030267">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -279,28 +255,28 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="443" y="175" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1624403345792" />
-    <state x="337" y="185" key="com.intellij.ide.util.TipDialog" timestamp="1624576972345">
+    <state x="337" y="185" key="com.intellij.ide.util.TipDialog" timestamp="1625011401118">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="337" y="185" key="com.intellij.ide.util.TipDialog/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1621737446630" />
-    <state x="337" y="185" key="com.intellij.ide.util.TipDialog/0.0.1280.720@0.0.1280.720" timestamp="1624576972345" />
-    <state x="450" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624408100608">
+    <state x="337" y="185" key="com.intellij.ide.util.TipDialog/0.0.1280.720@0.0.1280.720" timestamp="1625011401118" />
+    <state x="450" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624788809997">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
-    <state x="450" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720@0.0.1280.720" timestamp="1624408100608" />
-    <state x="0" y="0" width="612" height="720" key="find.popup" timestamp="1624408468807">
+    <state x="450" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720@0.0.1280.720" timestamp="1624788809997" />
+    <state x="0" y="0" width="612" height="720" key="find.popup" timestamp="1624839536569">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="1920" y="0" width="918" height="1080" key="find.popup/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1623844969019" />
-    <state x="0" y="0" width="612" height="720" key="find.popup/0.0.1280.720@0.0.1280.720" timestamp="1624408468807" />
+    <state x="0" y="0" width="612" height="720" key="find.popup/0.0.1280.720@0.0.1280.720" timestamp="1624839536569" />
     <state x="297" y="161" key="run.anything.popup" timestamp="1621899741395">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="297" y="161" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1621899741395" />
-    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1624580953375">
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1625014822317">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="2375" y="62" width="1008" height="1017" key="search.everywhere.popup/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1623844418942" />
-    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1624580953375" />
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1625014822317" />
   </component>
 </project>

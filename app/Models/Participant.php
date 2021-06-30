@@ -18,4 +18,8 @@ class Participant extends Model
     public function trainingSchedule() {
         return $this->belongsTo(TrainingSchedule::class, 'training_id')->withDefault();
     }
+
+    public function registrations() {
+        return $this->hasMany(Registration::class, 'participant_id');
+    }
 }

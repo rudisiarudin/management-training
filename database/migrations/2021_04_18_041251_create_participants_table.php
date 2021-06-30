@@ -19,6 +19,7 @@ class CreateParticipantsTable extends Migration
             $table->string('address');
             $table->string('email');
             $table->string('phone');
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->unsignedBigInteger('company_id')->nullable();
             $table->unsignedBigInteger('training_id')->nullable();
             $table->integer('report_progress')->nullable();

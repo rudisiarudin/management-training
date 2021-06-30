@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
@@ -50,8 +51,13 @@ class LoginController extends Controller
         return redirect()->to('login');
     }
 
-    protected function authenticated(Request $request, $user)
-    {
-        return redirect()->to('admin-dashboard/training-schedule');
+    public function redirectTo() {
+        $role = \auth()->user()->role_id;
+
+        if ($role == User::ROLE_ID_ADMIN) {
+            return '/admin-dashboard';
+        } else {
+            return '/front-app';
+        }
     }
 }

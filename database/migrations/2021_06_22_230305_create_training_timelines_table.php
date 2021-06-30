@@ -18,6 +18,7 @@ class CreateTrainingTimelinesTable extends Migration
             $table->unsignedBigInteger('trainer_id')->nullable();
             $table->unsignedBigInteger('training_schedule_id');
             $table->dateTime('schedule_date');
+            $table->integer('days');
             $table->timestamps();
         });
     }
