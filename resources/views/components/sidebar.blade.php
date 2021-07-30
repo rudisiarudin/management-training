@@ -15,6 +15,23 @@
     <hr class="sidebar-divider">
 
     <div class="sidebar-heading">
+        Manage Admin
+    </div>
+
+    <li class="nav-item {{ in_array(UrlSegment::ADMIN, request()->segments()) ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#adminIndexData" aria-expanded="true" aria-controls="adminIndexData">
+            <i class="fas fa-fw fa-users"></i>
+            <span>Admin Data</span>
+        </a>
+        <div id="adminIndexData" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Manage Admin:</h6>
+                <a class="collapse-item" href="{{ route('admin-index') }}">Show List</a>
+            </div>
+        </div>
+    </li>
+
+    <div class="sidebar-heading">
         Manage Participant
     </div>
 

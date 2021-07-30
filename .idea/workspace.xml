@@ -2,25 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c2b5319-4c07-4d92-a04e-90212b49cec9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/front-app/index.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/front-app/profile.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/front-app/register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/front-app/training-list.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/front-app.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/custom-routes/admin-routes.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/routes/custom-routes/front-app-routes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/admin/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/admin/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/Participant.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/Participant.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Models/TrainingSchedule.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/TrainingSchedule.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_04_18_041251_create_participants_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_04_18_041251_create_participants_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2021_06_22_230305_create_training_timelines_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2021_06_22_230305_create_training_timelines_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/register.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin-dasboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin-dasboard.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/UrlSegment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UrlSegment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/custom-routes/admin-routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/custom-routes/admin-routes.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -228,6 +218,7 @@
       <workItem from="1624927353080" duration="318000" />
       <workItem from="1624972832464" duration="1504000" />
       <workItem from="1625011389490" duration="1594000" />
+      <workItem from="1627094965615" duration="3194000" />
     </task>
     <servers />
   </component>
@@ -255,11 +246,11 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="443" y="175" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1624403345792" />
-    <state x="337" y="185" key="com.intellij.ide.util.TipDialog" timestamp="1625011401118">
+    <state x="337" y="185" key="com.intellij.ide.util.TipDialog" timestamp="1627094970929">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="337" y="185" key="com.intellij.ide.util.TipDialog/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1621737446630" />
-    <state x="337" y="185" key="com.intellij.ide.util.TipDialog/0.0.1280.720@0.0.1280.720" timestamp="1625011401118" />
+    <state x="337" y="185" key="com.intellij.ide.util.TipDialog/0.0.1280.720@0.0.1280.720" timestamp="1627094970929" />
     <state x="450" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624788809997">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -273,10 +264,10 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="297" y="161" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1621899741395" />
-    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1625014822317">
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1627097102729">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="2375" y="62" width="1008" height="1017" key="search.everywhere.popup/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1623844418942" />
-    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1625014822317" />
+    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1627097102729" />
   </component>
 </project>

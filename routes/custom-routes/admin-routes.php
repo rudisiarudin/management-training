@@ -10,7 +10,12 @@ use App\Http\Controllers\TrainingScheduleController;
 use App\Http\Controllers\TrainingTimelineController;
 
 Route::group(['prefix' => 'admin-dashboard', 'middleware' => ['auth', 'can:isAdmin']], function () {
-    Route::get('/', [AdminController::class, 'index'])->name('admin-index');
+    Route::group(['prefix' => '/admins'], function () {
+        Route::get('/', [AdminController::class, 'index'])->name('admin-index');
+        Route::get('/create', [AdminController::class, 'create'])->name('admin-create');
+        Route::post('/', [AdminController::class, 'save'])->name('admin-save');
+        Route::delete('/{id}', [AdminController::class, 'destroy'])->name('admin-delete');
+    });
 
     Route::group(['prefix' => '/participants'], function () {
         Route::get('/get-template', [ParticipantController::class, 'getTemplate'])->name('participant-get-template');

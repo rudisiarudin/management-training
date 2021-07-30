@@ -9,7 +9,9 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    const ROLE_ID_USER = 1;
     const ROLE_ID_ADMIN = 2;
+    const ROLE_ID_SUPER_ADMIN = 3;
 
     use HasFactory, Notifiable;
 
@@ -22,6 +24,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id'
     ];
 
     /**
