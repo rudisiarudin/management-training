@@ -56,8 +56,10 @@ class LoginController extends Controller
 
         if ($role == User::ROLE_ID_ADMIN) {
             return '/admin-dashboard';
-        } else {
+        } elseif ($role == User::ROLE_ID_USER) {
             return '/front-app';
+        } else {
+            return '/admin-dashboard';
         }
     }
 }

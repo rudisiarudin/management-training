@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter&family=Poppins&display=swap');
+
+        .file {
+            visibility: hidden;
+            position: absolute;
+        }
     </style>
     <script src="{{ asset('assets/js/require.min.js') }}"></script>
     <script>
@@ -42,28 +47,32 @@
         <div class="header py-4">
             <div class="container">
                 <div class="d-flex">
-                    <a class="header-brand" href="">
-                        <i class="fe fe-chart"></i> Participant Dashboard
+                    <a class="header-brand" href="{{ route('front-app-home') }}">
+                        <img src="{{ asset('img/tmi-logo.png') }}" class="header-brand-img">
                     </a>
                     <div class="d-flex order-lg-2 ml-auto">
                         <div class="dropdown">
                             <a href="#" class="nav-link pr-0 leading-none" data-toggle="dropdown">
-                                <span class="avatar" style="background-image: url({{ asset('assets/images/user/user-' . auth()->user()->id . '.jpg') }})"></span>
+                                @if(auth()->user()->participant->profile_image)
+                                    <span class="avatar" style="background-image: url({{ asset(auth()->user()->participant->profile_image) }})"></span>
+                                @else
+                                    <span class="avatar" style="background-image: url({{ asset('img/profile/default.png') }})"></span>
+                                @endif
                                 <span class="ml-2 d-none d-lg-block">
                                       <span class="text-default">{{ auth()->user()->email }}</span>
-                                      <small class="text-muted d-block mt-1">Training Participant</small>
+                                      <small class="text-muted d-block mt-1">Peserta Pelatihan</small>
                                 </span>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                <a class="dropdown-item" href="#">
-                                    <i class="dropdown-icon fe fe-user"></i> Profile
+                                <a class="dropdown-item" href="{{ route('front-app-profile') }}">
+                                    <i class="dropdown-icon fe fe-user"></i> Profil
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
                                     @method('POST')
                                     <button class="dropdown-item" href="#">
-                                        <i class="dropdown-icon fe fe-log-out"></i> Sign out
+                                        <i class="dropdown-icon fe fe-log-out"></i> Keluar
                                     </button>
                                 </form>
                             </div>
@@ -81,10 +90,10 @@
                     <div class="col-lg order-lg-first">
                         <ul class="nav nav-tabs border-0 flex-column flex-lg-row">
                             <li class="nav-item">
-                                <a href="{{ route('front-app-home') }}" class="nav-link @if(\Request::segment(2) == '') active @endif"><i class="fe fe-home"></i> Home</a>
+                                <a href="{{ route('front-app-home') }}" class="nav-link @if(\Request::segment(2) == '') active @endif"><i class="fe fe-home"></i> Beranda</a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{ route('front-app-training-list') }}" class="nav-link @if(\Request::segment(2) == 'training-list') active @endif"><i class="fe fe-list"></i> Training List</a>
+                                <a href="{{ route('front-app-training-list') }}" class="nav-link @if(\Request::segment(2) == 'training-list') active @endif"><i class="fe fe-list"></i> Daftar Pelatihan</a>
                             </li>
                         </ul>
                     </div>
@@ -109,5 +118,25 @@
         </div>
     </footer>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).on("click", ".browse", function(e) {
+        var self = $(this).attr('data-id')
+        $(self).trigger("click");
+    });
+    $('input[type="file"]').change(function(e) {
+        var fileName = e.target.files.name;
+        var id = e.target.id
+        $("#file").val(fileName);
+
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("preview_" + id).src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+</script>
 </body>
 </html>

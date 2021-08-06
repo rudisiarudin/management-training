@@ -64,6 +64,7 @@
                                     <td><i>Address</i></td>
                                     <td><i>Email</i></td>
                                     <td><i>Phone</i></td>
+                                    <td><i>Company</i></td>
                                 </tr>
                             </table>
                         </div>

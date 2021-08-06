@@ -18,4 +18,6 @@ include __DIR__ . '\custom-routes\front-app-routes.php';
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', function () {
+    return redirect()->route('login');
+})->name('home');

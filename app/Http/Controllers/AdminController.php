@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Participant;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -27,6 +29,7 @@ class AdminController extends Controller
             'email' => 'required|unique:users|string|email',
             'password' => 'required|min:8|confirmed'
         ]);
+        $params['password'] = Hash::make($params['password']);
         $params['role_id'] = User::ROLE_ID_ADMIN;
 
         User::create($params);
@@ -43,6 +46,40 @@ class AdminController extends Controller
         return redirect()->route('admin-index')->with([
             'status' => 'success',
             'message' => 'Successfully delete admin account.'
+        ]);
+    }
+
+    public function edit($id) {
+        $user = User::find($id);
+
+        return view('admin-dashboard.admin.edit', compact('user'));
+    }
+
+    public function update(Request $request, $id) {
+        $request->validate([
+            'name' => 'required|string',
+            'role_id' => '',
+            'user_photo' => ''
+        ]);
+        $user = User::find($id);
+        $profileImage = '';
+
+        if ($request->hasFile('user_photo')) {
+            $file = $request->file('user_photo');
+            $fileName = md5($file->getFilename()) . '.' . $file->getClientOriginalExtension();
+            $file->move('img/profile/', $fileName);
+
+            $profileImage =  'img/profile/' . $fileName;
+        }
+
+        $params = $request->except('_token');
+        $params['user_photo'] = $profileImage;
+
+        $user->update($params);
+
+        return redirect()->route('admin-index')->with([
+            'status' => 'success',
+            'message' => 'Successfully update admin account.'
         ]);
     }
 }

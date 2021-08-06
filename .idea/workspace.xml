@@ -2,15 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9c2b5319-4c07-4d92-a04e-90212b49cec9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/admin/create.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/admin/index.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/admin/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/components/status-training.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/FrontAppController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/FrontAppController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ParticipantController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ParticipantController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Imports/ParticipantImport.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Imports/ParticipantImport.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/User.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/UrlSegment.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/UrlSegment.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Services/ParticipantService.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Services/ParticipantService.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/lang/en/auth.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/lang/en/auth.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/admin/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/admin/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/login.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/participant/create-bulk.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/participant/create-bulk.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin-dashboard/participant/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin-dashboard/participant/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/alert-notification.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/alert-notification.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/components/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front-app/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-app/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front-app/profile.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-app/profile.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front-app/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-app/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/front-app/training-list.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/front-app/training-list.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/admin-dasboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/admin-dasboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/front-app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/front-app.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/custom-routes/admin-routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/custom-routes/admin-routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/custom-routes/front-app-routes.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/custom-routes/front-app-routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +45,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="MERGE" />
   </component>
   <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
@@ -219,6 +240,9 @@
       <workItem from="1624972832464" duration="1504000" />
       <workItem from="1625011389490" duration="1594000" />
       <workItem from="1627094965615" duration="3194000" />
+      <workItem from="1628004364159" duration="2705000" />
+      <workItem from="1628083748420" duration="11174000" />
+      <workItem from="1628176995248" duration="8980000" />
     </task>
     <servers />
   </component>
@@ -230,10 +254,6 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="383" y="164" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1280.720@0.0.1280.720" timestamp="1624843495574" />
-    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1618733030267">
-      <screen x="0" y="0" width="1280" height="720" />
-    </state>
-    <state x="395" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1280.720@0.0.1280.720" timestamp="1618733030267" />
     <state x="371" y="116" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1624493276204">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
@@ -246,28 +266,32 @@
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="443" y="175" key="NewPhpClassDialog/0.0.1280.720@0.0.1280.720" timestamp="1624403345792" />
-    <state x="337" y="185" key="com.intellij.ide.util.TipDialog" timestamp="1627094970929">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state x="506" y="278" key="com.intellij.ide.util.TipDialog" timestamp="1628177032764">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="337" y="185" key="com.intellij.ide.util.TipDialog/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1621737446630" />
+    <state x="337" y="185" key="com.intellij.ide.util.TipDialog/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1628004380646" />
     <state x="337" y="185" key="com.intellij.ide.util.TipDialog/0.0.1280.720@0.0.1280.720" timestamp="1627094970929" />
-    <state x="450" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624788809997">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state x="506" y="278" key="com.intellij.ide.util.TipDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1628177032764" />
+    <state x="2595" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1628004378013">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
+    <state x="2595" y="417" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1628004378013" />
     <state x="450" y="278" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1280.720@0.0.1280.720" timestamp="1624788809997" />
-    <state x="0" y="0" width="612" height="720" key="find.popup" timestamp="1624839536569">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state x="0" y="0" width="918" height="1080" key="find.popup" timestamp="1628182767630">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state x="1920" y="0" width="918" height="1080" key="find.popup/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1623844969019" />
     <state x="0" y="0" width="612" height="720" key="find.popup/0.0.1280.720@0.0.1280.720" timestamp="1624839536569" />
+    <state x="0" y="0" width="918" height="1080" key="find.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1628182767630" />
     <state x="297" y="161" key="run.anything.popup" timestamp="1621899741395">
       <screen x="0" y="0" width="1280" height="720" />
     </state>
     <state x="297" y="161" key="run.anything.popup/0.0.1280.720@0.0.1280.720" timestamp="1621899741395" />
-    <state x="303" y="41" width="672" height="678" key="search.everywhere.popup" timestamp="1627097102729">
-      <screen x="0" y="0" width="1280" height="720" />
+    <state x="455" y="62" width="1008" height="1017" key="search.everywhere.popup" timestamp="1628185933516">
+      <screen x="0" y="0" width="1920" height="1080" />
     </state>
-    <state x="2375" y="62" width="1008" height="1017" key="search.everywhere.popup/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1623844418942" />
+    <state x="2375" y="62" width="1008" height="1017" key="search.everywhere.popup/0.0.1280.720/1920.0.1920.1080@1920.0.1920.1080" timestamp="1628004509596" />
     <state x="303" y="41" width="672" height="678" key="search.everywhere.popup/0.0.1280.720@0.0.1280.720" timestamp="1627097102729" />
+    <state x="455" y="62" width="1008" height="1017" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1628185933516" />
   </component>
 </project>

@@ -10,10 +10,14 @@ use App\Http\Controllers\TrainingScheduleController;
 use App\Http\Controllers\TrainingTimelineController;
 
 Route::group(['prefix' => 'admin-dashboard', 'middleware' => ['auth', 'can:isAdmin']], function () {
+    Route::get('/', [AdminController::class, 'dashboard'])->name('admin-dashboard');
+
     Route::group(['prefix' => '/admins'], function () {
         Route::get('/', [AdminController::class, 'index'])->name('admin-index');
         Route::get('/create', [AdminController::class, 'create'])->name('admin-create');
         Route::post('/', [AdminController::class, 'save'])->name('admin-save');
+        Route::get('/{id}', [AdminController::class, 'edit'])->name('admin-edit');
+        Route::put('/{id}', [AdminController::class, 'update'])->name('admin-update');
         Route::delete('/{id}', [AdminController::class, 'destroy'])->name('admin-delete');
     });
 

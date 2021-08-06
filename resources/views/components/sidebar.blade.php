@@ -35,19 +35,6 @@
         Manage Participant
     </div>
 
-    <li class="nav-item {{ in_array(UrlSegment::REGISTRATION, request()->segments()) ? 'active' : '' }}">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#registrationData" aria-expanded="true" aria-controls="registrationData">
-            <i class="fas fa-fw fa-file-alt"></i>
-            <span>Registration Data</span>
-        </a>
-        <div id="registrationData" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Registration:</h6>
-                <a class="collapse-item" href="{{ route('registration-index') }}">Show List</a>
-            </div>
-        </div>
-    </li>
-
     <li class="nav-item {{ in_array(UrlSegment::PARTICIPANT, request()->segments()) ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
             <i class="fas fa-fw fa-users-cog"></i>
@@ -58,7 +45,20 @@
                 <h6 class="collapse-header">Manage Participants:</h6>
                 <a class="collapse-item" href="{{ route('participant-index') }}">Show List</a>
                 <a class="collapse-item" href="{{ route('participant-create') }}">Add Single Participant</a>
-                <a class="collapse-item" href="">Create Bulk Participant</a>
+                <a class="collapse-item" href="{{ route('participant-create-bulk') }}">Create Bulk Participant</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item {{ in_array(UrlSegment::REGISTRATION, request()->segments()) ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#registrationData" aria-expanded="true" aria-controls="registrationData">
+            <i class="fas fa-fw fa-file-alt"></i>
+            <span>Registration Data</span>
+        </a>
+        <div id="registrationData" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Manage Registration:</h6>
+                <a class="collapse-item" href="{{ route('registration-index') }}">Show List</a>
             </div>
         </div>
     </li>
@@ -84,19 +84,6 @@
     </div>
 
     <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="collapse" data-target="#trainingData" aria-expanded="true" aria-controls="trainingData">
-            <i class="fas fa-fw fa-folder"></i>
-            <span>Training Data</span>
-        </a>
-        <div id="trainingData" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Manage Trainings:</h6>
-                <a class="collapse-item" href="{{ route('training-index') }}">Schedule List</a>
-            </div>
-        </div>
-    </li>
-
-    <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
             <i class="fas fa-fw fa-calendar-check"></i>
             <span>Training Schedule</span>
@@ -107,6 +94,19 @@
                 <a class="collapse-item" href="{{ route('training-schedule-index') }}">Schedule List</a>
                 <a class="collapse-item" href="{{ route('training-schedule-create') }}">Add New Training</a>
                 <a class="collapse-item" href="{{ route('training-timeline-index') }}">Training Timeline</a>
+            </div>
+        </div>
+    </li>
+
+    <li class="nav-item">
+        <a class="nav-link" href="#" data-toggle="collapse" data-target="#trainingData" aria-expanded="true" aria-controls="trainingData">
+            <i class="fas fa-fw fa-folder"></i>
+            <span>Training Data</span>
+        </a>
+        <div id="trainingData" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Manage Trainings:</h6>
+                <a class="collapse-item" href="{{ route('training-index') }}">Master Training List</a>
             </div>
         </div>
     </li>

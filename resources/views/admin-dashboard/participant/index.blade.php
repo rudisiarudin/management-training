@@ -31,7 +31,7 @@
                                 <tr>
                                     <td>{{ ($participants->currentPage() - 1) * 10 + $key + 1 }}</td>
                                     <td>{{ $item->name }}</td>
-                                    <td>{{ $item->companies->name ?: '-' }}</td>
+                                    <td>{{ $item->companies->name ? $item->companies->name : ($item->raw_company ?: '-') }}</td>
                                     <td>{{ $item->trainingSchedule->training->name ?: '-' }}</td>
                                     <td>
                                         @if($item->ktp)

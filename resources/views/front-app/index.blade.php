@@ -1,13 +1,22 @@
 @extends('layouts.front-app')
 
 @section('content')
+    <div class="row">
+        <div class="col-md-12 my-4">
+            <h4>
+                Halo, {{ auth()->user()->name }}.
+            </h4>
+
+            @include('components.alert-notification')
+        </div>
+    </div>
 
     @if($trainingToday)
         <div class="row">
             <div class="col-md-12 my-4">
                 <h3>
                     <span class="text-success"><i class="fe fe-check-circle mr-2"></i></span>
-                    You are attending for training: {{ $trainingToday->trainingSchedule->training->name }}
+                    Pelatihan {{ $trainingToday->trainingSchedule->training->name }} saat ini sedang berlangsung.
                 </h3>
             </div>
 
@@ -15,7 +24,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="">
-                            <span class="text-success"><i class="fe fe-calendar mr-2"></i></span> Today Training
+                            Pelatihan Hari Ini
                         </h5>
                         <hr>
 
@@ -23,9 +32,9 @@
                             <table class="table table-striped table-borderless">
                                 <thead>
                                 <tr>
-                                    <th>Training</th>
-                                    <th>Lecture</th>
-                                    <th>Days</th>
+                                    <th>Pelatihan</th>
+                                    <th>Narasumber</th>
+                                    <th>Hari Ke</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -43,10 +52,10 @@
 
             @if($trainingTomorrow)
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card bg-light">
                         <div class="card-body">
                             <h5 class="">
-                                <span><i class="fe fe-calendar mr-2"></i></span> Tomorrow Schedule
+                                <span><i class="fe fe-calendar mr-2"></i></span> Detail Materi Selanjutnya
                             </h5>
                             <hr>
 
@@ -54,9 +63,9 @@
                                 <table class="table table-striped table-borderless">
                                     <thead>
                                     <tr>
-                                        <th>Lecture</th>
-                                        <th>Trainer</th>
-                                        <th>Phone</th>
+                                        <th>Materi Pelatihan</th>
+                                        <th>Narasumber</th>
+                                        <th>Telepon</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -74,20 +83,22 @@
             @endif
         </div>
 
+        @include('components.status-training')
+
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">Schedule List</h3>
+                        <h3 class="card-title">Jadwal Materi Pelatihan Berjalan</h3>
                     </div>
                     <div class="card-table table-responsive">
                         <table class="table table-vcenter">
                             <thead class="table-secondary">
                             <tr>
                                 <th>#</th>
-                                <th>Training Lecture</th>
-                                <th>Trainer</th>
-                                <th>Date</th>
+                                <th>Materi Pelatihan</th>
+                                <th>Narasumber</th>
+                                <th>Hari & Tanggal</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -113,44 +124,52 @@
         </div>
     @else
         @if(count($trainingTimelines))
-            <div class="col-md-12">
-                <div class="alert alert-success">
-                    Your training will start on : {{ \Carbon\Carbon::parse($trainingTimelines[0]->schedule_date)->locale('id_ID')->isoFormat('dddd, D MMMM Y') }}
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-success">
+                        Pelatihan anda akan mulai pada : {{ \Carbon\Carbon::parse($trainingTimelines[0]->schedule_date)->locale('id_ID')->isoFormat('dddd, D MMMM Y') }}
+                    </div>
                 </div>
             </div>
         @endif
 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="">
-                            <span class="text-muted"><i class="fe fe-calendar mr-2"></i></span> You not have any training today...
-                        </h5>
-                        <hr>
+        @if($trainingSchedule)
+            @include('components.status-training')
 
-                        <button class="btn btn-primary">
-                            <span><i class="fe fe-search mr-2"></i></span> Find Training
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            @if($trainingSchedule)
-                <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-body">
-                            Nearest training schedule : <strong>{{ $trainingSchedule->training->name }}</strong>
+                            <p>
+                                Anda telah mendaftar untuk pelatihan : <strong>{{ $trainingSchedule->training->name }}</strong>,
+                                Mohon lengkapi dokumen persyaratan dan upload di halaman profil.
+                            </p>
 
                             <hr>
-
-                            <button class="btn btn-primary">
-                                <span><i class="fe fe-file-plus mr-2"></i></span> Register Training
-                            </button>
+                            <a href="{{ route('front-app-profile') }}" class="btn btn-outline-primary btn-pill">
+                                <span><i class="fe fe-user-check mr-2"></i></span> Perbarui Profil
+                            </a>
                         </div>
                     </div>
                 </div>
-            @endif
-        </div>
+            </div>
+        @else
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="">
+                                <span class="text-muted"><i class="fe fe-calendar mr-2"></i></span> Anda tidak memiliki pelatihan apapun saat ini...
+                            </h5>
+                            <hr>
+
+                            <a href="{{ route('front-app-training-list') }}" class="btn btn-primary">
+                                <span><i class="fe fe-search mr-2"></i></span> Cari Pelatihan
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        @endif
     @endif
 @endsection

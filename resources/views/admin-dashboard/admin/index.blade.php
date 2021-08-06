@@ -41,7 +41,7 @@
                                             </button>
                                         </form>
 
-                                        <a href="{{ route('training-edit', ['id' => $item->id]) }}" class="m-1" title="Edit">
+                                        <a href="{{ route('admin-edit', ['id' => $item->id]) }}" class="m-1" title="Edit">
                                             <span class="text-primary small"><i class="fa fa-fw fa-edit"></i></span>
                                         </a>
                                     </td>

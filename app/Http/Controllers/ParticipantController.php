@@ -7,9 +7,11 @@ use App\Models\Company;
 use App\Models\Participant;
 use App\Models\Registration;
 use App\Models\TrainingSchedule;
+use App\Models\User;
 use App\Services\ParticipantService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ParticipantController extends Controller
@@ -67,7 +69,8 @@ class ParticipantController extends Controller
             'surat_pengantar' => '',
         ]);
 
-        $createdParticipant = $this->participantService->saveParticipant($request);
+        $createdParticipant = $this->participantService->saveParticipant($request->except('_token'));
+        $this->participantService->updateFileParticipant($request, $createdParticipant->id);
 
         if ($request->training_id) {
             Registration::create([
@@ -78,6 +81,13 @@ class ParticipantController extends Controller
                 'phone' => $createdParticipant->phone,
             ]);
         }
+
+        $params = $request->only(['name', 'email',]);
+        $params['password'] = Hash::make('password');
+        $params['role_id'] = User::ROLE_ID_USER;
+        $createdUser = User::create($params);
+
+        $createdParticipant->update(['user_id' => $createdUser->id]);
 
         return redirect()->route('participant-index')->with([
             'status' => 'success',

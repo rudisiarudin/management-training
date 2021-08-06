@@ -5,7 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use App\Services\ParticipantService;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
@@ -32,13 +35,22 @@ class RegisterController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
+     * New instance participant service
+     *
+     * @var ParticipantService
+     */
+    protected $participantService;
+
+    /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(
+        ParticipantService $participantService
+    ) {
         $this->middleware('guest');
+        $this->participantService = $participantService;
     }
 
     /**
@@ -71,8 +83,25 @@ class RegisterController extends Controller
         ]);
     }
 
+    public function registered(Request $request, $user)
+    {
+        $params = $user->toArray();
+        $params['user_id'] = $user->id;
+        $this->participantService->saveParticipant($params);
+    }
+
     public function showRegistrationForm()
     {
         return view('admin-dashboard.auth.register');
+    }
+
+    public function redirectTo() {
+        $role = \auth()->user()->role_id;
+
+        if ($role == User::ROLE_ID_ADMIN) {
+            return '/admin-dashboard';
+        } else {
+            return '/front-app';
+        }
     }
 }
