@@ -99,7 +99,7 @@
                             <hr>
                             <div class="form-group">
                                 <button type="submit" class="btn btn-primary w-100">
-                                    <i class="fa fa-fw fa-file-upload mr-2"></i> Submit Training Schedule
+                                    <i class="fa fa-fw fa-file-upload mr-2"></i> Update Training Schedule
                                 </button>
                             </div>
                         </form>

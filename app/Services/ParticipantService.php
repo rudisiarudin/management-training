@@ -53,7 +53,7 @@ class ParticipantService
             );
         }
 
-        $params = $request->except('_token');
+        $params = $request->except('_token', 'proof_transfer');
         $params['ktp'] = $ktp;
         $params['ijazah'] = $ijazah;
         $params['surat_pengantar'] = $suratPengantar;

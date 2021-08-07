@@ -9,6 +9,8 @@ class TrainingSchedule extends Model
 {
     use HasFactory;
 
+    const STATUS_FINISHED = 3;
+
     protected $guarded = [];
 
     public function training() {

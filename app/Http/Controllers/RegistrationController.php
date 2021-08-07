@@ -11,9 +11,15 @@ use Illuminate\Http\Request;
 class RegistrationController extends Controller
 {
     public function index() {
-        $registrations = Registration::get();
+        $groupFilter = \request()->get('groupFilter');
+        $query = Registration::query();
+        $query->when($groupFilter, function($q) use($groupFilter) {
+            return $q->where('training_schedule_id', $groupFilter);
+        });
+        $registrations = $query->get();
+        $trainingSchedule = TrainingSchedule::get();
 
-        return view('admin-dashboard.registration.index', ['registrations' => $registrations]);
+        return view('admin-dashboard.registration.index', ['registrations' => $registrations, 'trainingSchedule' => $trainingSchedule]);
     }
 
     public function create() {

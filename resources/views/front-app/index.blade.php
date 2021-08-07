@@ -14,10 +14,10 @@
     @if($trainingToday)
         <div class="row">
             <div class="col-md-12 my-4">
-                <h3>
-                    <span class="text-success"><i class="fe fe-check-circle mr-2"></i></span>
-                    Pelatihan {{ $trainingToday->trainingSchedule->training->name }} saat ini sedang berlangsung.
-                </h3>
+                <div class="d-flex">
+                    <h3 class="text-success"><i class="fe fe-check-circle mr-2"></i></h3>
+                    <h3>Pelatihan {{ $trainingToday->trainingSchedule->training->name }} saat ini sedang berlangsung.</h3>
+                </div>
             </div>
 
             <div class="col-md-6">
@@ -158,9 +158,9 @@
                 <div class="col-md-6">
                     <div class="card">
                         <div class="card-body">
-                            <h5 class="">
+                            <p class="">
                                 <span class="text-muted"><i class="fe fe-calendar mr-2"></i></span> Anda tidak memiliki pelatihan apapun saat ini...
-                            </h5>
+                            </p>
                             <hr>
 
                             <a href="{{ route('front-app-training-list') }}" class="btn btn-primary">
@@ -171,5 +171,25 @@
                 </div>
             </div>
         @endif
+    @endif
+
+    @if($finishedTraining)
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card bg-blue-lighter">
+                    <div class="card-body d-flex justify-content-between align-items-center">
+                        <strong>Download sertifikat sementara dari pelatihan terakhir anda disini</strong>
+
+                        <form action="{{ route('front-app-generate-certificate', ['id' => $finishedTraining->id]) }}" method="POST">
+                            @csrf
+
+                            <button type="submit" class="btn btn-primary">
+                                <span><i class="fe fe-download-cloud mr-2"></i></span> Download Sertifikat Sementara
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     @endif
 @endsection

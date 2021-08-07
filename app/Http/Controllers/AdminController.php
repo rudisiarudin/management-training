@@ -2,15 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Company;
 use App\Models\Participant;
+use App\Models\Registration;
+use App\Models\TrainingSchedule;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
     public function dashboard() {
-        return \view('admin-dashboard.index');
+        $trainingSchedule = TrainingSchedule::where('schedule_date', '>=', Carbon::now()->format('Y-m-d'))->get();
+        $participants = Participant::get();
+        $unpaidRegistrations = Registration::where('is_paid', Registration::UNPAID)->with('trainingSchedule')->get();
+        $companiesCount = Company::get()->count();
+
+        return \view('admin-dashboard.index', compact('trainingSchedule', 'participants', 'unpaidRegistrations', 'companiesCount'));
     }
 
     public function index() {

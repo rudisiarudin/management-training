@@ -9,6 +9,9 @@ class Registration extends Model
 {
     use HasFactory;
 
+    const UNPAID = 1;
+    const PAID = 2;
+
     protected $guarded = [];
 
     public function trainingSchedule() {
