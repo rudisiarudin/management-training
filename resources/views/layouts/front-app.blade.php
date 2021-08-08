@@ -40,6 +40,7 @@
     <script src="{{ asset('assets/plugins/charts-c3/plugin.js') }}"></script>
     <!-- Input Mask Plugin -->
     <script src="{{ asset('assets/plugins/input-mask/plugin.js') }}"></script>
+    <link rel="icon" href="{{ asset('img/tmi-logo-white.png') }}">
 </head>
 <body class="">
 <div class="page">

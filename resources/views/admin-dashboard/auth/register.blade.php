@@ -13,19 +13,24 @@
     <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+    <link rel="icon" href="{{ asset('img/tmi-logo-white.png') }}">
+
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
-<body class="bg-gradient-primary">
+<body>
+<div style="background-image: url({{ asset('img/background-tmi-2.jpg') }}); background-repeat: no-repeat; background-size: cover; position: absolute; top: 0; bottom: 0; right: 0; left: 0; filter: blur(4px)">
+</div>
+
 <div class="container">
     <!-- Outer Row -->
-    <div class="row justify-content-center">
+    <div class="row min-vh-100 justify-content-center align-items-center">
         <div class="col-xl-6 col-lg-6 col-md-9">
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
                     <div class="p-5">
-                        <div class="text-center">
-                            <h1 class="h4 text-gray-900 mb-4">Sign Up</h1>
+                        <div class="text-center mb-3">
+                            <img src="{{ asset('img/tmi-logo.png') }}" class="w-50">
                         </div>
                         <form class="user" action="{{ route('register') }}" method="POST">
                             @csrf
@@ -62,7 +67,7 @@
                                 @enderror
                             </div>
                             <button type="submit" class="btn btn-primary btn-user btn-block">
-                                Submit
+                                Register
                             </button>
                         </form>
                     </div>
