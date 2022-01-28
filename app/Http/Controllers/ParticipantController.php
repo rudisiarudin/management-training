@@ -25,7 +25,15 @@ class ParticipantController extends Controller
     }
 
     public function index() {
-        $participants = Participant::paginate(10);
+        $searchName = \request()->get('searchName');
+        $sortData = \request()->get('sortData') ?: 'asc';
+        $participants = Participant::where( function($q) use($searchName, $sortData) {
+            if ($searchName) {
+                $q->where('name', 'like', '%' . $searchName . '%');
+            }
+        })
+        ->orderBy('id', $sortData)
+        ->paginate(10);
 
         return view('admin-dashboard.participant.index', ['participants' => $participants]);
     }
