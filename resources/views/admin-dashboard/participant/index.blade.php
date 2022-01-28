@@ -7,7 +7,21 @@
         <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h3 class="h4 mb-0 text-gray-800">Participant List</h3>
         </div>
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <input name="participantsFilter" id="participantsFilter" class="form-control">
+                
+            </div>
+            <div class="col-md-3">
+                <button id="applyFilter" class="btn btn-primary">
+                    Search
+                </button>
 
+                <button id="clearFilter" class="btn btn-secondary">
+                    Clear
+                </button>
+            </div>
+        </div>
         <div class="row">
             <div class="col-md-12">
                 @include('components.alert-notification')
@@ -17,7 +31,12 @@
                         <table class="table table-borderless table-striped table-hover">
                             <thead class="">
                             <tr>
-                                <th>#</th>
+                                <th>
+                                    #
+                                    <button class="btn btn-link p-0 pl-3" id="sortDataUp">
+                                        <i class="fas fa-arrow-up"></i>
+                                    </button> 
+                                </th>
                                 <th>Name</th>
                                 <th>Company Name</th>
                                 <th>Last Training Attended</th>
@@ -86,4 +105,30 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('script')
+    <script>
+        $(document).ready(function () {
+            $('#applyFilter').click(function (e) {
+                e.preventDefault()
+                let searchName = $('#participantsFilter').val()
+                let url = location.href.split('?')[0]
+                location.href = `${url}?searchName=${searchName}`
+                console.log(location.href)
+            })
+
+            $('#clearFilter').click(function(e) {
+                e.preventDefault()
+                location.href = location.pathname
+            })
+
+            $('#sortDataUp').click(function (e) {
+                e.preventDefault()
+                let url = location.href.split('?')[0]
+                location.href = `${url}?sortData=desc`
+                console.log(location.href)
+            })
+        })
+    </script>
 @endsection
